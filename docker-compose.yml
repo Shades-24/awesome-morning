@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  awesome-morning:
+    build: .
+    container_name: awesome-morning
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      # Persist output directory
+      - ./output:/app/output
+      # Allow updating agenda file
+      - ./agenda.txt:/app/agenda.txt
+    environment:
+      - TZ=America/New_York
+    # Optional: if you want to run in a specific timezone
+    # add timezone data

@@ -1,0 +1,17 @@
+[Unit]
+Description=Awesome Morning - Daily Motivation Video Service
+After=network.target
+
+[Service]
+Type=simple
+User=your-username
+WorkingDirectory=/path/to/awesome-morning
+ExecStart=/usr/bin/python3 /path/to/awesome-morning/scheduler.py
+Restart=always
+RestartSec=10
+
+# Environment variables
+Environment="PATH=/usr/bin:/usr/local/bin"
+
+[Install]
+WantedBy=multi-user.target
