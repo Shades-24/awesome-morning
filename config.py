@@ -5,8 +5,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Email Configuration
+RESEND_API_KEY = os.getenv('RESEND_API_KEY')  # Recommended
 EMAIL_FROM = os.getenv('EMAIL_FROM')
-EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')
+EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')  # Gmail fallback
 EMAIL_TO = os.getenv('EMAIL_TO', 'cmraad1@gmail.com')
 
 # AI Configuration

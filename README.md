@@ -49,26 +49,32 @@ nano .env
 **Required settings in `.env`:**
 
 ```bash
-# Email Configuration (Gmail recommended)
-EMAIL_FROM=your-email@gmail.com
-EMAIL_PASSWORD=your-gmail-app-password  # See setup guide below
+# Email Configuration - OPTION 1: Resend (RECOMMENDED)
+# Sign up at https://resend.com (free, 3000 emails/month)
+RESEND_API_KEY=re_your_api_key_here
 EMAIL_TO=cmraad1@gmail.com
 
-# AI API Key (optional but recommended - choose one)
+# Email Configuration - OPTION 2: Gmail SMTP (not recommended)
+# EMAIL_FROM=your-email@gmail.com
+# EMAIL_PASSWORD=your-gmail-app-password
+# EMAIL_TO=cmraad1@gmail.com
+
+# AI API Key (optional but recommended)
 ANTHROPIC_API_KEY=your-anthropic-key-here
-# OR
-OPENAI_API_KEY=your-openai-key-here
 
 # Schedule (optional, defaults shown)
 DELIVERY_TIME=07:00
 TIMEZONE=America/New_York
 ```
 
-**Gmail App Password Setup:**
-1. Go to https://myaccount.google.com/apppasswords
-2. Sign in to your Google account
-3. Create an app password for "Mail"
-4. Copy the 16-character password to `EMAIL_PASSWORD` in `.env`
+**Resend Setup (RECOMMENDED - 5 minutes):**
+1. Go to https://resend.com/signup
+2. Create free account (no credit card needed)
+3. Get API key from dashboard
+4. Add `RESEND_API_KEY=re_...` to `.env`
+5. Done! Much easier than Gmail.
+
+**See [RESEND_SETUP.md](RESEND_SETUP.md) for detailed email setup guide.**
 
 ### 3. Test the System
 
@@ -298,12 +304,18 @@ TIMEZONE=America/Los_Angeles
 
 ### Email Not Sending
 
-**Problem:** `SMTPAuthenticationError`
+**Problem:** Email not being sent
 
 **Solution:**
-1. Make sure you're using a Gmail App Password, not your regular password
-2. Enable 2-factor authentication on your Google account
-3. Generate app password at https://myaccount.google.com/apppasswords
+1. **Use Resend (recommended)** - Much more reliable than Gmail
+   - Sign up at https://resend.com
+   - Get API key and add to `.env`
+   - See [RESEND_SETUP.md](RESEND_SETUP.md) for details
+
+2. **If using Gmail:**
+   - Make sure you're using a Gmail App Password, not your regular password
+   - Enable 2-factor authentication on your Google account
+   - Generate app password at https://myaccount.google.com/apppasswords
 
 ### Video Generation Failed
 
