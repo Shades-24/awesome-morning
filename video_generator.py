@@ -2,10 +2,12 @@
 import os
 from datetime import datetime
 from PIL import Image, ImageDraw, ImageFont
-from moviepy.editor import (
-    ImageClip, AudioFileClip, CompositeVideoClip,
-    TextClip, concatenate_videoclips
-)
+try:
+    # MoviePy 2.x imports
+    from moviepy import ImageClip, AudioFileClip, CompositeVideoClip, TextClip, concatenate_videoclips
+except ImportError:
+    # MoviePy 1.x fallback
+    from moviepy.editor import ImageClip, AudioFileClip, CompositeVideoClip, TextClip, concatenate_videoclips
 import config
 
 def create_background_image(width=1920, height=1080):

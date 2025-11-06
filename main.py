@@ -108,10 +108,12 @@ def test_system():
 
     # Check configuration
     print("Checking configuration...")
-    if not config.EMAIL_FROM or not config.EMAIL_PASSWORD:
-        print("⚠ Email not configured. Video will be generated but not sent.")
-    else:
+    if hasattr(config, 'RESEND_API_KEY') and config.RESEND_API_KEY:
+        print(f"✓ Email configured: Resend → {config.EMAIL_TO}")
+    elif config.EMAIL_FROM and config.EMAIL_PASSWORD:
         print(f"✓ Email configured: {config.EMAIL_FROM} → {config.EMAIL_TO}")
+    else:
+        print("⚠ Email not configured. Video will be generated but not sent.")
 
     if not config.AI_PROVIDER:
         print("⚠ No AI API key found. Will use fallback quotes.")
